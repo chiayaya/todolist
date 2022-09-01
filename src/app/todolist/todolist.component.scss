@@ -1,0 +1,30 @@
+.task-creation-area {
+    button {
+        margin-left: 40px;
+    }
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    &:hover {
+        background-color: #eeeeee;
+    }
+}
+
+
+.__operate-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #b9b2a2;
+    cursor: pointer;
+    align-items: baseline;
+    vertical-align: middle;
+    display: inline-flex;
+    white-space: nowrap;
+}
+
+
