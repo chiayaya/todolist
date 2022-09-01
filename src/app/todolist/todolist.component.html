@@ -1,21 +1,19 @@
 <div class="task-creation-area">
-  <input class="__input" type="text">
-  <button class="__btn">＋</button>
-</div>
-123
-<i class="fi fi-br-check"></i>
-<i class="fi fi-rs-plus"></i>
-<i class="fi fi-rr-cross"></i>
-<i class="fi fi-rr-trash"></i>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>New task description</mat-label>
+    <input matInput type="text" [(ngModel)]="value" class="__input">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-<div class="all-list-area">
-    <ul>
-        <li>
-
-            <span>
-            </span>
-
-        </li>
-    </ul>
+  <button mat-flat-button color="primary" class="__btn">
+    Add
+  </button>
 </div>
 
+<div class="all-list-area" *ngFor="let task of taskList">
+  <mat-checkbox [(ngModel)]="task.complete">
+    {{task.description}}
+  </mat-checkbox>
+</div>
