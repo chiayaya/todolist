@@ -8,11 +8,11 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TodolistComponent implements OnInit {
 
-  value = '';
+  newTask = '';
   taskList = [
-    {complete: true, description:'XXX'},
-    {complete: false, description:'YYY'},
-    {complete: true, description:'ZZZ'}
+    {complete: true, description:'Experience with CSS Framework'},
+    {complete: true, description:'Experience in one of the modern frontend frameworks'},
+    {complete: false, description:'Strong UX and design sensibilities'}
   ]
   editingIndex: number | null = null;
   editingDescription: string = '';
@@ -26,9 +26,11 @@ export class TodolistComponent implements OnInit {
 
   addTask() {
     const newtask = {
-      complete: false, description:this.value
+      complete: false, 
+      description: this.newTask,
     };
-    this.taskList.push(newtask)
+    this.taskList.push(newtask);
+    this.newTask = '';
   }
 
   editTask(i: number) {

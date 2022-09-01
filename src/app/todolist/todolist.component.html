@@ -1,8 +1,8 @@
 <div class="task-creation-area">
   <mat-form-field appearance="fill">
-    <mat-label>New task description</mat-label>
-    <input matInput type="text" [(ngModel)]="value" class="__input">
-    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-label>New task</mat-label>
+    <input matInput type="text" [(ngModel)]="newTask" class="__input">
+    <button *ngIf="newTask" matSuffix mat-icon-button aria-label="Clear" (click)="newTask=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
