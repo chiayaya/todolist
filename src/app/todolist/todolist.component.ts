@@ -9,11 +9,7 @@ import { FormBuilder } from '@angular/forms';
 export class TodolistComponent implements OnInit {
 
   newTask = '';
-  taskList = [
-    {complete: true, description:'Experience with CSS Framework'},
-    {complete: true, description:'Experience in one of the modern frontend frameworks'},
-    {complete: false, description:'Strong UX and design sensibilities'}
-  ]
+  taskList: Array<TaskRow> = [];
   editingIndex: number | null = null;
   editingDescription: string = '';
   constructor(
@@ -22,6 +18,12 @@ export class TodolistComponent implements OnInit {
 
 
   ngOnInit(): void {
+    const dummyTaskLists = [
+      {complete: true, description:'Experience with CSS Framework'},
+      {complete: true, description:'Experience in one of the modern frontend frameworks'},
+      {complete: false, description:'Strong UX and design sensibilities'}
+    ];
+    this.taskList = dummyTaskLists;
   }
 
   addTask() {
@@ -35,7 +37,7 @@ export class TodolistComponent implements OnInit {
 
   editTask(i: number) {
     this.editingIndex = i;
-    this.editingDescription = this.taskList[i]['description'];
+    this.editingDescription = this.taskList[i].description;
   }
 
   deleteTask(i: number) {
@@ -43,14 +45,14 @@ export class TodolistComponent implements OnInit {
   }
 
   saveTask(i: number) {
-    this.taskList[i]['description'] = this.editingDescription;
+    this.taskList[i].description = this.editingDescription;
     this.editingIndex = null;
     console.log(this.editingIndex);
   }
 
 }
 
-export interface TaskList {
+export interface TaskRow {
   complete: boolean,
   description: string,
 }
