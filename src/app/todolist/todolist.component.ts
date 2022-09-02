@@ -9,7 +9,9 @@ import { FormBuilder } from '@angular/forms';
 export class TodolistComponent implements OnInit {
 
   newTask = '';
+  filterText = '';
   taskList: Array<TaskRow> = [];
+  taskListOrigin: Array<TaskRow> = [];
   editingIndex: number | null = null;
   editingDescription: string = '';
   constructor(
@@ -24,6 +26,7 @@ export class TodolistComponent implements OnInit {
       {complete: false, description:'Strong UX and design sensibilities'}
     ];
     this.taskList = dummyTaskLists;
+    this.taskListOrigin = dummyTaskLists;
   }
 
   addTask() {
@@ -33,6 +36,18 @@ export class TodolistComponent implements OnInit {
     };
     this.taskList.push(newtask);
     this.newTask = '';
+  }
+
+  filterList() {
+    this.taskList = this.taskListOrigin;
+    if(this.filterText) {
+      this.taskList = this.taskList.filter(task => {
+        const lowerDescription = task.description.toLowerCase();
+        const lowerFilterText = this.filterText.toLowerCase();
+        return lowerDescription.includes(lowerFilterText)
+      });
+    }
+    
   }
 
   editTask(i: number) {

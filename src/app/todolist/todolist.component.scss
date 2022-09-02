@@ -1,6 +1,18 @@
+.todo-list {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: 500px;
+}
+
 .task-creation-area {
+    display: flex;
+    .__new-task-input {
+        flex: 3;
+    }
     button {
-        margin-left: 40px;
+        margin: 0px 0px 16px 40px;
+        flex: 1;
     }
 }
 

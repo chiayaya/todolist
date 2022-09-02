@@ -1,28 +1,41 @@
-<div class="task-creation-area">
+<div class="todo-list">
+  <div class="task-creation-area">
+    <mat-form-field appearance="fill" class="__new-task-input">
+      <mat-label>New task</mat-label>
+      <input matInput type="text" [(ngModel)]="newTask" class="__input">
+      <button *ngIf="newTask" matSuffix mat-icon-button aria-label="Clear" (click)="newTask=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="__btn" (click)="addTask()">
+      Add
+    </button>
+  </div>
+
   <mat-form-field appearance="fill">
-    <mat-label>New task</mat-label>
-    <input matInput type="text" [(ngModel)]="newTask" class="__input">
-    <button *ngIf="newTask" matSuffix mat-icon-button aria-label="Clear" (click)="newTask=''">
+    <mat-label>Filter</mat-label>
+    <input matInput type="text" [(ngModel)]="filterText" class="__input" (blur)="filterList()">
+    <button matSuffix mat-icon-button aria-label="Search" (click)="filterList()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button *ngIf="filterText" matSuffix mat-icon-button aria-label="Clear" (click)="filterText=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
 
-  <button mat-flat-button color="primary" class="__btn" (click)="addTask()">
-    Add
-  </button>
-</div>
-
-<div class="all-list-area" *ngFor="let task of taskList; let i = index">
-  <div class="row">
-    <mat-checkbox clss="__task" [(ngModel)]="task.complete">
-      <span *ngIf="editingIndex !== i; else showInput">{{task.description}}</span>
-      <ng-template #showInput>
-        <input type="text"  [(ngModel)]="editingDescription" (blur)="saveTask(i)">
-      </ng-template>
-    </mat-checkbox>
-    <span class="__icon-group">
-      <mat-icon class="__operate-icon" (click)="editTask(i)">edit</mat-icon>
-      <mat-icon class="__operate-icon" (click)="deleteTask(i)">delete_forever</mat-icon>
-    </span>
+  <div class="all-list-area" *ngFor="let task of taskList; let i = index">
+    <div class="row">
+      <mat-checkbox clss="__task" [(ngModel)]="task.complete">
+        <span *ngIf="editingIndex !== i; else showInput">{{task.description}}</span>
+        <ng-template #showInput>
+          <input type="text" [(ngModel)]="editingDescription" (blur)="saveTask(i)">
+        </ng-template>
+      </mat-checkbox>
+      <span class="__icon-group">
+        <mat-icon class="__operate-icon" (click)="editTask(i)">edit</mat-icon>
+        <mat-icon class="__operate-icon" (click)="deleteTask(i)">delete_forever</mat-icon>
+      </span>
+    </div>
   </div>
 </div>

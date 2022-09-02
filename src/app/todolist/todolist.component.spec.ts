@@ -47,9 +47,9 @@ describe('TodolistComponent', () => {
   it('should clear variable "newTask" when addTask() is called', () => {
     const dummyDescription = 'Test case';
     const dummyTaskLists = [
-      {complete: true, description:'Experience with CSS Framework'},
-      {complete: true, description:'Experience in one of the modern frontend frameworks'},
-      {complete: false, description:'Strong UX and design sensibilities'}
+      {complete: true, description:'Dummy description A0001'},
+      {complete: true, description:'Dummy description A0002'},
+      {complete: false, description:'Dummy description A0003'}
     ];
     component.newTask = dummyDescription;
     component.taskList = dummyTaskLists;
@@ -57,6 +57,15 @@ describe('TodolistComponent', () => {
     component.addTask();
     expect(component.newTask === '').toBeTruthy();
   });
+  // #endregion
+
+  // #region filterList related tests
+  it('should filter task by "filterText" when filterList() is called', () => {
+    component.filterText = "a0001"
+    component.filterList();
+    expect(component.taskList.length).toEqual(1);
+  });
+ 
   // #endregion
 
   // #region editTask related tests
