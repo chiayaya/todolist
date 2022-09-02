@@ -47,7 +47,6 @@ export class TodolistComponent implements OnInit {
   saveTask(i: number) {
     this.taskList[i].description = this.editingDescription;
     this.editingIndex = null;
-    console.log(this.editingIndex);
   }
 
 }
