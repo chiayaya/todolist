@@ -61,7 +61,7 @@ describe('TodolistComponent', () => {
 
   // #region filterList related tests
   it('should filter task by "filterText" when filterList() is called', () => {
-    component.filterText = "a0001"
+    component.filterText = "ux"
     component.filterList();
     expect(component.taskList.length).toEqual(1);
   });
